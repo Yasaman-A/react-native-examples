@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Team from './Team';
 import { Button } from 'react-native-paper';
+import Team from './Team';
 
 const styles = StyleSheet.create({
   rowContainer: {
@@ -18,10 +18,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
-  }
+  },
 });
-
-
+const findWinner = (team1Score, team2Score) => {
+  if (team1Score > team2Score) {
+    return ('Cougar');
+  } if (team1Score < team2Score) {
+    return ('Dinos');
+  }
+  return ('No Winner');
+};
 const Game = () => {
   const [team1Score, setTeam1Score] = useState(0);
   const [team2Score, setTeam2Score] = useState(0);
@@ -29,45 +35,36 @@ const Game = () => {
   return (
     <View style={styles.colContainer}>
       <Button
-        mode='contained'
+        mode="contained"
         onPress={() => {
           setTeam1Score(0);
           setTeam2Score(0);
-        }}>
+        }}
+      >
         New Game
-            </Button>
+      </Button>
       <View style={styles.rowContainer}>
         <View style={{ margin: 15 }}>
-          <Team name='Cougars' score={team1Score} url='https://mrucougars.com/images/logos/site/site.png'></Team>
-          <Button
-            mode='outlined'
-            onPress={() => {
-              var currentScore = team1Score;
-              setTeam1Score(currentScore + 1);
-            }}>
-            Score
-                    </Button>
+          <Team name="Cougars" score={team1Score} setScore={setTeam1Score} url="https://mrucougars.com/images/logos/site/site.png" />
+
         </View>
 
-        <View >
-          <Team name='Dinos' score={team2Score} url='https://content.sportslogos.net/logos/77/2379/full/7465_calgary_dinos-partial-2013.png'></Team>
-          <Button
-            mode='outlined'
-            onPress={() => {
-              var currentScore = team2Score;
-              setTeam2Score(currentScore + 1);
-            }}>
-            Score
-                    </Button>
+        <View>
+          <Team name="Dinos" score={team2Score} setScore={setTeam2Score} url="https://content.sportslogos.net/logos/77/2379/full/7465_calgary_dinos-partial-2013.png" />
+
         </View>
       </View>
-      <View >
-        <Text>{team1Score} vs. {team2Score}</Text>
+
+      <View>
+        <Text>
+          Winner is:
+          {' '}
+          {findWinner(team1Score, team2Score)}
+        </Text>
       </View>
 
-
-    </View >
+    </View>
   );
-}
+};
 
 export default Game;
