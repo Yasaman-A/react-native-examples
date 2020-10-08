@@ -7,7 +7,7 @@ const Team = (props) => {
   return (
     <View>
       <Text>
-        {name}
+        {name}:{props.score}
       </Text>
       <Image
         source={{ uri: url }}
