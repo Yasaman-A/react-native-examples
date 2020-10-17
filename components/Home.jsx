@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import 'react-native-gesture-handler';
 import Other from './Other';
 
@@ -14,16 +14,6 @@ const styles = StyleSheet.create({
 
 
 const Home = ({ navigation }) => {
-    const [isLoading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        fetch('https://reactnative.dev/movies.json')
-            .then((response) => response.json())
-            .then((json) => setData(json.movies))
-            .catch((error) => console.error(error))
-            .finally(() => setLoading(false));
-    }, []);
 
     return (
         <View style={{ flex: 1, padding: 24 }}>
@@ -36,12 +26,6 @@ const Home = ({ navigation }) => {
 
             </Button>
 
-            <FlatList
-                data={data}
-                renderItem={({ item }) => (
-                    <Text>{item.title}, {item.releaseYear}</Text>
-                )}
-            />
         </View>
     );
 }
