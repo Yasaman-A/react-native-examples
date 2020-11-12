@@ -64,8 +64,8 @@ const Signup = ({ navigation }) => {
             <Text>Please enter your information to register.</Text>
             <Text style={{ color: 'red' }}>{errorMessage}</Text>
             <TextInput style={styles.input} label="Email" mode="outlined" placeholder="Enter your email address" onChangeText={(text) => { setEmail(text); }} />
-            <TextInput style={styles.input} label="Password" secureTextEntry={true} mode="outlined" placeholder="Enter your password" onChangeText={(text) => { setPassword(text); checkPassword(); }} />
-            <TextInput style={styles.input} label="Repeat Password" secureTextEntry={true} mode="outlined" placeholder="Confirm your password" onChangeText={(text) => { setRepeatPassword(text); checkPassword(); }} />
+            <TextInput style={styles.input} label="Password" secureTextEntry={true} mode="outlined" placeholder="Enter your password" onChangeText={(text) => { setPassword(text); }} onBlur={(text) => { checkPassword(); }} />
+            <TextInput style={styles.input} label="Repeat Password" secureTextEntry={true} mode="outlined" placeholder="Confirm your password" onChangeText={(text) => { setRepeatPassword(text); }} onBlur={(text) => { checkPassword(); }} />
             <Text style={{ color: 'green' }}>{message}</Text>
 
             <View style={styles.rowContainer}>
