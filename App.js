@@ -1,6 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { StyleSheet, Text, View, } from 'react-native';
+import firebase from './src/firebase/config';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -11,11 +13,28 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function App() {
+const App = () => {
+
+  //---------------------------------------------------
+  const db = firebase.firestore();
+
+  const ref = db.collection('user');
+  ref.get().then(
+    (records) => {
+      records.forEach((doc) => {
+        console.log(doc.id, ':', doc.data());
+      });
+    }
+  ).catch((error) => { console.log(error) });
+  //---------------------------------------------------
   return (
+
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar />
+      <Text>
+        Write the rest of your app here!
+      </Text>
     </View>
+
   );
-}
+};
+export default App;

@@ -14,4 +14,4 @@ web-build/
 
 package-lock.json
 .vscode/
-react-native-examples.code-workspace
+*.code-workspace
