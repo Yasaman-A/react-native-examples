@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@firebase/app": "^0.6.13",
-    "@firebase/auth": "^0.15.1",
+    "@firebase/auth": "^0.15.2",
     "@firebase/firestore": "^2.0.0",
     "@firebase/storage": "^0.4.2",
     "@react-native-community/async-storage": "^1.12.1",
@@ -19,7 +19,7 @@
     "@react-navigation/stack": "^5.9.3",
     "expo": "~39.0.2",
     "expo-status-bar": "~1.0.2",
-    "firebase": "^7.24.0",
+    "firebase": "^8.1.1",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",

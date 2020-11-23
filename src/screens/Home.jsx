@@ -45,20 +45,20 @@ const Home = ({ navigation }) => {
   const { setAuthenticated } = React.useContext(AuthContext);
   const [name, setName] = useState('');
 
-  const db = firebase.firestore();
-
   useEffect(() => {
+    const db = firebase.firestore();
     const user = firebase.auth().currentUser;
     setName(user.displayName);
+
     const userId = user.uid;
-    // eslint-disable-next-line spaced-comment
-    //const userDoc = db.collection('user').doc(userId);
     const ref = db.collection('user').doc(userId);
     ref.get().then(
       (record) => {
-        console.log(record.data.fullName);
+        console.log('Full Name:', record.data().name);
       },
-    ).catch(() => { });
+    ).catch((error) => {
+      console.log(error.message);
+    });
   }, []);
 
   return (
